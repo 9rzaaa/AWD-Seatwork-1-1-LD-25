@@ -198,3 +198,23 @@ header .profile-img {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+
+.back-to-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #7DF9FF;
+}
