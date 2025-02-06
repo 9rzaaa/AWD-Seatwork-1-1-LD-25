@@ -96,3 +96,105 @@ header .profile-img {
     margin-bottom: 10px;
     color: var(black);
 }
+
+.transaction-history-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.transaction-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transaction-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    min-width: 300px;
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.transaction-box:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.transaction-box h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.transaction-box input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.transaction-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.transaction-box input:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #3b82f6;
+}
+
+.transaction-box button {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.transaction-box button:hover {
+    background-color: var(--blue);
+}
+
+.chart-placeholder {
+    flex: 2;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.chart-placeholder:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.chart-placeholder h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+#transactionChart {
+    width: 100%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
