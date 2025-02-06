@@ -38,6 +38,27 @@
             </div>
         </div>
 
-        
+        <div class="transaction-history-container">
+            <div class="transaction-section">
+                <div class="transaction-box">
+                    <h3>Deposit</h3>
+                    <input type="number" id="deposit-amount" placeholder="Deposit Amount">
+                    <button onclick="makeDeposit()">Deposit</button>
+                </div>
 
+                <div class="transaction-box">
+                    <h3>Withdrawals</h3>
+                    <input type="number" id="withdraw-amount" placeholder="Withdraw Amount">
+                    <button onclick="makeWithdrawal()">Withdraw</button>
+                </div>
+            </div>
+
+            <div class="chart-placeholder">
+                <h3>Transaction History</h3>
+                <div id="transactionChart"></div>
+            </div>
+        </div>
     </div>
+
+</body>
+</html>
