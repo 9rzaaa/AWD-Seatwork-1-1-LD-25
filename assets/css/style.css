@@ -19,7 +19,7 @@ body {
 }
 
 .background {
-    background: url(/assets/img/background1.jpg) no-repeat;
+    background: url(../img/background1.jpg) no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -112,7 +112,7 @@ body {
     width: 75%;
     height: 550px;
     margin-top: 20px;
-    background: url(/assets/img/background1.jpg) no-repeat;
+    background: url(../img/background1.jpg) no-repeat;
     background-position: center;
     background-size: cover;
     border-radius: 20px;
