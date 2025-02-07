@@ -4,25 +4,24 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/zyx-0314/">
+  <a href="https://github.com/9rzaaa/">
   <!-- TODO: If you want to add logo or banner you can add it here -->
-    <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
+    <img src="./assets/img/logo.png" alt="Transactly" width="130" height="100">
   </a>
 <!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">Title</h3>
+  <h3 align="center">Transactly</h3>
 </div>
 <!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
 </div>
 
 <br />
 
 <!-- TODO: Change the zyx-0314 into your github username  -->
 <!-- TODO: Change the WD-Template-Project into the same name of your folder -->
-![](https://visit-counter.vercel.app/counter.png?page=zyx-0314/WD-Template-Project)
+![](https://visit-counter.vercel.app/counter.png?page=9rzaaa/AWD-Seatwork-1-1-LD-25)
 
-[![wakatime](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8.svg)](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8)
+[![wakatime](https://wakatime.com/badge/user/aab03298-e141-49f4-872e-bbd0975c07f4.svg)](https://wakatime.com/@aab03298-e141-49f4-872e-bbd0975c07f4)
 
 ---
 
@@ -61,18 +60,14 @@
 <!-- The following are just sample -->
 Description of the project in details.
 
-Guiding Question:
-- What is the project
-- Whats the purpose
-- What are key components
-- What technology used and how it is used
+This project is a multi-page web application designed as a digital banking platform called Transactly. Its primary purpose is to provide users with a seamless experience for managing their finances, including tracking deposits, withdrawals, and balances. The project aims to simulate basic banking functionalities with a straightforward and user-friendly interface, helping users manage transactions and account information effortlessly.
 
 ### Key Components
 <!-- TODO: List of Key Components -->
 <!-- The following are just sample -->
-- MultiPage Website/Single Page Website
-- Parallax transition
-- Transactional
+- Multi-Page Website: A login page and a dashboard page for transaction tracking.
+- Parallax Transitions: Smooth, modern visual effects for an enhanced user experience.
+- Transactional Features: Users can make deposits, withdrawals, and track transaction history dynamically.
 
 ### Technology
 <!-- TODO: List of Technology Used -->
@@ -119,4 +114,9 @@ WD-ProjectName
 <!-- TODO: Add References -->
 | Title | Purpose | Link |
 |-|-|-|
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+| How to make login form | So user can create an account | https://www.youtube.com/watch?v=Z_AbWH-Vyl8 |
+| Font Awesome Icons | Icon library used for displaying icons. | https://fontawesome.com/ |
+| Boxicons | A simple, customizable set of icons for web design. | https://boxicons.com/ |
+| Withdraw & Deposit | Feature of my website | https://www.youtube.com/watch?v=Bq08zgP06rI |
+| Local Storage API | Documentation on the localStorage API used for data storage in the browser. | https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage |
+| MDN Web Docs - JavaScript | Comprehensive guide and documentation on JavaScript. | https://developer.mozilla.org/en-US/docs/Web/JavaScript |
