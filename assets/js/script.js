@@ -15,7 +15,7 @@ form.addEventListener('submit', (e) => {
         localStorage.setItem('password', password);
         localStorage.setItem('balance', balance);
 
-        window.location.href = './pages/page1/index.html';
+        window.location.href = '/AWD-Seatwork-1-1-LD-25/pages/page1/index.html';
     } else {
         alert('Please fill in all fields.');
     }
