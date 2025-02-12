@@ -1,82 +1,92 @@
-function loadUserInfo() {
-    const username = localStorage.getItem("username");
-    const balance = parseFloat(localStorage.getItem("balance")) || 0;
+const BALANCE_KEY = "user_balance";
+const TRANSACTION_HISTORY_KEY = "transaction_history";
+const ADMIN_USERNAME = "ADMIN";
 
-    document.querySelector("header h1").innerText = `Welcome, ${username}`;
+const totalDepositElement = document.getElementById("total-deposit");
+const totalWithdrawElement = document.getElementById("total-withdraw");
+const totalBalanceElement = document.getElementById("total-balance");
+const transactionChartElement = document.getElementById("transactionChart");
 
-    document.getElementById("total-balance").innerText = `₱${balance.toFixed(2)}`;
+const depositInput = document.getElementById("deposit-amount");
+const withdrawInput = document.getElementById("withdraw-amount");
 
-    localStorage.setItem("currentBalance", balance);
+function initializeDashboard() {
+    const activeUser = localStorage.getItem("active_user");
 
-    localStorage.setItem("totalDeposit", 0);
-    localStorage.setItem("totalWithdraw", 0);
+    if (activeUser !== ADMIN_USERNAME) {
+        alert("Unauthorized access! Redirecting to login...");
+        window.location.href = "../../index.html"; // Redirect to login
+        return;
+    }
+
+    updateUI();
 }
 
 function makeDeposit() {
-    const depositAmount = parseFloat(document.getElementById("deposit-amount").value);
-    if (!depositAmount || depositAmount <= 0) {
+    const amount = parseFloat(depositInput.value);
+    if (isNaN(amount) || amount <= 0) {
         alert("Please enter a valid deposit amount.");
         return;
     }
 
-    let currentBalance = parseFloat(localStorage.getItem("currentBalance"));
-    currentBalance += depositAmount;
+    let balance = parseFloat(localStorage.getItem(BALANCE_KEY)) || 0;
+    balance += amount;
+    localStorage.setItem(BALANCE_KEY, balance.toString());
 
-    let totalDeposit = parseFloat(localStorage.getItem("totalDeposit")) || 0;
-    totalDeposit += depositAmount;
-
-    localStorage.setItem("currentBalance", currentBalance);
-    localStorage.setItem("totalDeposit", totalDeposit);
-
-    document.getElementById("total-balance").innerText = `₱${currentBalance.toFixed(2)}`;
-    document.getElementById("total-deposit").innerText = `₱${totalDeposit.toFixed(2)}`;
-
-    logTransaction("Deposit", depositAmount);
-
-    document.getElementById("deposit-amount").value = "";
+    addTransaction("Deposit", amount);
+    updateUI();
+    depositInput.value = "";
 }
 
 function makeWithdrawal() {
-    const withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
-    if (!withdrawAmount || withdrawAmount <= 0) {
+    const amount = parseFloat(withdrawInput.value);
+    if (isNaN(amount) || amount <= 0) {
         alert("Please enter a valid withdrawal amount.");
         return;
     }
 
-    let currentBalance = parseFloat(localStorage.getItem("currentBalance"));
-    if (withdrawAmount > currentBalance) {
+    let balance = parseFloat(localStorage.getItem(BALANCE_KEY)) || 0;
+    if (amount > balance) {
         alert("Insufficient balance!");
         return;
     }
 
-    currentBalance -= withdrawAmount;
+    balance -= amount;
+    localStorage.setItem(BALANCE_KEY, balance.toString());
 
-    let totalWithdraw = parseFloat(localStorage.getItem("totalWithdraw")) || 0;
-    totalWithdraw += withdrawAmount;
-
-    localStorage.setItem("currentBalance", currentBalance);
-    localStorage.setItem("totalWithdraw", totalWithdraw);
-
-    document.getElementById("total-balance").innerText = `₱${currentBalance.toFixed(2)}`;
-    document.getElementById("total-withdraw").innerText = `₱${totalWithdraw.toFixed(2)}`;
-
-    logTransaction("Withdrawal", withdrawAmount);
-
-    document.getElementById("withdraw-amount").value = "";
+    addTransaction("Withdraw", amount);
+    updateUI();
+    withdrawInput.value = "";
 }
 
-function logTransaction(action, amount) {
-    const transactionHistory = document.getElementById("transactionChart");
-    const now = new Date();
-    const dateTime = now.toLocaleString(); // Format: MM/DD/YYYY, HH:MM:SS
-
-    const transactionEntry = document.createElement("p");
-    transactionEntry.innerText = `${dateTime} - ${action}: ₱${amount.toFixed(2)}`;
-    transactionEntry.classList.add("transaction-entry");
-
-    transactionHistory.appendChild(transactionEntry);
+function addTransaction(type, amount) {
+    let transactions = JSON.parse(localStorage.getItem(TRANSACTION_HISTORY_KEY)) || [];
+    transactions.push({
+        type,
+        amount,
+        date: new Date().toLocaleString()
+    });
+    localStorage.setItem(TRANSACTION_HISTORY_KEY, JSON.stringify(transactions));
 }
 
-window.onload = () => {
-    loadUserInfo();
-};
+function updateUI() {
+    let balance = parseFloat(localStorage.getItem(BALANCE_KEY)) || 0;
+    let transactions = JSON.parse(localStorage.getItem(TRANSACTION_HISTORY_KEY)) || [];
+
+    let totalDeposit = transactions.filter(t => t.type === "Deposit").reduce((sum, t) => sum + t.amount, 0);
+    let totalWithdraw = transactions.filter(t => t.type === "Withdraw").reduce((sum, t) => sum + t.amount, 0);
+
+    totalDepositElement.textContent = `₱${totalDeposit.toLocaleString()}`;
+    totalWithdrawElement.textContent = `₱${totalWithdraw.toLocaleString()}`;
+    totalBalanceElement.textContent = `₱${balance.toLocaleString()}`;
+
+    renderTransactionHistory(transactions);
+}
+
+function renderTransactionHistory(transactions) {
+    transactionChartElement.innerHTML = transactions.length
+        ? transactions.map(t => `<p><strong>${t.type}</strong> - ₱${t.amount.toLocaleString()} <small>${t.date}</small></p>`).join("")
+        : "<p>No transactions yet.</p>";
+}
+
+document.addEventListener("DOMContentLoaded", initializeDashboard);
